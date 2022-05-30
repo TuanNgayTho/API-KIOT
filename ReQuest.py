@@ -8,8 +8,13 @@ myobj = {'scopes': 'PublicApi.Access',
          'client_secret': '44E20528CABF2FC8D0CBDC02C8886688B2F316C1',
          }
 myStatus = {
-            # 'status': input('1: Đang giao hàng' '/n' + 'Vui lòng chọn trạng thái đơn hàng:')
-            'status': 2
+            'status': input('1: Phiếu tạm\n'
+                            '2: Đang giao hàng\n'
+                            '3: Hoàn thành\n'
+                            '4: Đã hủy\n'
+                            '5: Đã xác nhận\n'
+                            'Vui lòng chọn trạng thái đơn hàng: ')
+            # 'status': 2
             }
 
 x = requests.post(urlToken, data=myobj)
@@ -25,5 +30,5 @@ e = d.json()
 f = e['data']
 g = f[0]
 
-print(e)
-print(g["statusValue"])
+print(f)
+# print(g["statusValue"])
