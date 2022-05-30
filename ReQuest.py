@@ -30,5 +30,7 @@ e = d.json()
 f = e['data']
 g = f[0]
 
-print(f)
+print(len(f))
+for h in f:
+    print(h)
 # print(g["statusValue"])
