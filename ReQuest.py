@@ -1,4 +1,5 @@
 import requests
+import json
 
 urlToken = 'https://id.kiotviet.vn/connect/token'
 urlStatus = 'https://public.kiotapi.com/orders'
@@ -31,6 +32,8 @@ f = e['data']
 g = f[0]
 
 print(len(f))
+print(type(f))
 for h in f:
-    print(h)
+    # print(h)
+    print(h['customerName'], h['purchaseDate'], h['soldByName'])
 # print(g["statusValue"])
