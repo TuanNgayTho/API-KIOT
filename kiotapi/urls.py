@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import IndexView
+from .views import SnippetList
 
 
 urlpatterns = [
-    path('', IndexView.as_view()),
+    path('danhsach/', SnippetList.as_view()),
 ]

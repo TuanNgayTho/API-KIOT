@@ -1,9 +1,10 @@
 # pip install djangorestframework
-from rest_framework.serializers import ModelSerializer
-from .models import customers
+
+from rest_framework import serializers
 
 
-class CourseSerializer(ModelSerializer):
-    class Meta:
-        model = customers
-        fields = ['id', 'customer', 'time', 'seller']
+class SnippetSerial(serializers.Serializer):
+    # customerName = serializers.IntegerField(read_only=True)
+    customerName = serializers.CharField(required=False, allow_blank=True, max_length=100)
+    purchaseDate = serializers.CharField(required=False, allow_blank=True, max_length=100)
+    soldByName = serializers.CharField(required=False, allow_blank=True, max_length=100)

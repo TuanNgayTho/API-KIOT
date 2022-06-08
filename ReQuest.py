@@ -1,6 +1,16 @@
 import requests
-import json
+from datetime import date
+import time
+import random
 
+
+starttime = ''
+endtime = ''
+xacnhan = ''
+phieutam = ''
+hoanthanh = ''
+
+today = date.today()
 urlToken = 'https://id.kiotviet.vn/connect/token'
 urlStatus = 'https://public.kiotapi.com/orders'
 myobj = {'scopes': 'PublicApi.Access',
@@ -9,31 +19,38 @@ myobj = {'scopes': 'PublicApi.Access',
          'client_secret': '44E20528CABF2FC8D0CBDC02C8886688B2F316C1',
          }
 myStatus = {
-            'status': input('1: Phiếu tạm\n'
-                            '2: Đang giao hàng\n'
-                            '3: Hoàn thành\n'
-                            '4: Đã hủy\n'
-                            '5: Đã xác nhận\n'
-                            'Vui lòng chọn trạng thái đơn hàng: ')
-            # 'status': 2
+            # 'status': input('1: Phiếu tạm\n'
+            #                 '2: Đang giao hàng\n'
+            #                 '3: Hoàn thành\n'
+            #                 '4: Đã hủy\n'
+            #                 '5: Đã xác nhận\n'
+            #                 'Vui lòng chọn trạng thái đơn hàng: '),
+            'status': [1, 3, 5],
+            'lastModifiedFrom': today,
+            'toDate': endtime,
             }
 
-x = requests.post(urlToken, data=myobj)
-a = x.json()
-b = a["access_token"]
-c = str(b)
-header = {
-        'Retailer': 'tmktek',
-        'Authorization': 'Bearer ' + c,
-        }
-d = requests.get(urlStatus, params=myStatus, headers=header)
-e = d.json()
-f = e['data']
-g = f[0]
 
-print(len(f))
-print(type(f))
-for h in f:
-    # print(h)
-    print(h['customerName'], h['purchaseDate'], h['soldByName'])
-# print(g["statusValue"])
+def run():
+    while True:
+        global f
+        time.sleep(random.randint(1, 2))
+
+        x = requests.post(urlToken, data=myobj)
+        a = x.json()
+        b = a["access_token"]
+        c = str(b)
+
+        header = {
+            'Retailer': 'tmktek',
+            'Authorization': 'Bearer ' + c,
+        }
+
+        d = requests.get(urlStatus, params=myStatus, headers=header)
+        e = d.json()
+        f = e['data']
+        return e['data']
+
+
+f = run()
+

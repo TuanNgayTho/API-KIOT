@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,20 +7,41 @@
 </head>
 <body>
 <nav>
-    <ul>
-        {% for item in DS %}
-        <li> {{ item.customer }} </li>
-        {% endfor %}
-    </ul>
-</nav>
-<nav>
     <div>
         <form action="" method="post">
             {% csrf_token %}
-            <input type="text" name="username">
-            <input type="submit" value=" Gửi ">
+            <label for="lastModifiedFrom">Thời gian bắt đầu:</label>
+            <input type="date" id="lastModifiedFrom" name="StartTime">
+            <label for="toDate">Thời gian kết thúc:</label>
+            <input type="date" id="toDate" name="EndTime">
+            <br>
+            <input type="checkbox" id="PT" name="PhieuTam" value="Bóng đá">
+            <label for="PT">Phiếu đặt tạm</label>
+            <input type="checkbox" id="DXN" name="DaXacNhan" value="Bơi lội">
+            <label for="DXN">Phiếu đặt đã xác nhận</label>
+            <input type="checkbox" id="HT" name="HoanThanh" value="Điền kinh">
+            <label for="HT">Phiếu đặt đã hoàn thành</label>
+            <br>
+            <input type="submit" value=" Xác Nhận ">
         </form>
     </div>
 </nav>
+<table>
+        {% for item in DS %}
+            {% if item.statusValue == 'Phiếu tạm' %}
+                <tr>
+                    <td>{{ item.customerName }}</td>
+                    <td>{{ item.purchaseDate }}</td>
+                    <td>{{ item.soldByName }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+</table>
+<br>
+<table id="mytb">
+
+</table>
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'js/myscript.js' %}"></script>
 </body>
 </html>

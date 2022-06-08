@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from kiotapi.views import IndexView
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('kiotapi.urls')),
+    path('api/', include('kiotapi.urls')),
+    path('', IndexView.as_view()),
 ]
