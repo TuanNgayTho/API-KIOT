@@ -26,20 +26,29 @@
         </form>
     </div>
 </nav>
-<table>
-        {% for item in DS %}
-            {% if item.statusValue == 'Phiếu tạm' %}
-                <tr>
-                    <td>{{ item.customerName }}</td>
-                    <td>{{ item.purchaseDate }}</td>
-                    <td>{{ item.soldByName }}</td>
-                </tr>
-            {% endif %}
-        {% endfor %}
+<nav>
+
+<!--    <table>-->
+<!--            {% for item in DS %}-->
+<!--                {% if item.statusValue == 'Phiếu tạm' %}-->
+<!--                    <tr>-->
+<!--                        <td>{{ item.customerName }}</td>-->
+<!--                        <td>{{ item.purchaseDate }}</td>-->
+<!--                        <td>{{ item.soldByName }}</td>-->
+<!--                    </tr>-->
+<!--                {% endif %}-->
+<!--            {% endfor %}-->
+<!--    </table>-->
+
+</nav>
+<br>
+<table id="tbtamthu">
 </table>
 <br>
-<table id="mytb">
-
+<table id="tbxacnhan">
+</table>
+<br>
+<table id="tbhoanthanh">
 </table>
 <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
 <script src="{% static 'js/myscript.js' %}"></script>

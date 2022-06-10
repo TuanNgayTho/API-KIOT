@@ -52,7 +52,7 @@ def getdata():
                                             'toDate': endtime}, headers=header)
         e = d.json()
         f = e['data']
-        # return f
+        return f
 
 
 def run():
