@@ -19,17 +19,17 @@ myobj = {'scopes': 'PublicApi.Access',
          'client_id': '6378e360-8136-458d-8eae-e9a882e84caa',
          'client_secret': '44E20528CABF2FC8D0CBDC02C8886688B2F316C1',
          }
-# myStatus = {
+myStatus = {
             # 'status': input('1: Phiếu tạm\n'
             #                 '2: Đang giao hàng\n'
             #                 '3: Hoàn thành\n'
             #                 '4: Đã hủy\n'
             #                 '5: Đã xác nhận\n'
             #                 'Vui lòng chọn trạng thái đơn hàng: '),
-            # 'status': [1, 3, 5],
-            # 'lastModifiedFrom': starttime,
-            # 'toDate': endtime,
-            # }
+            'status': [1, 3, 5],
+            'lastModifiedFrom': starttime,
+            'toDate': endtime,
+            }
 
 
 def getdata():
@@ -52,6 +52,7 @@ def getdata():
                                             'toDate': endtime}, headers=header)
         e = d.json()
         f = e['data']
+        # return f
 
 
 def run():
