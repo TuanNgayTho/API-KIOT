@@ -1,6 +1,10 @@
 setInterval(myfunc,500);
 var phieutam = document.getElementById('PT');
+var daxacnhan = document.getElementById('DXN');
+var hoanthanh = document.getElementById('HT');
 phieutam.checked = true;
+daxacnhan.checked = true;
+hoanthanh.checked = true;
 function myfunc(){
     $.get( "/api/danhsach/", function( data ) {
         var DataTable = '';
@@ -25,17 +29,19 @@ function myfunc(){
     $.get( "/api/danhsach/", function( data ) {
     var DataTable = '';
     data.forEach(element => {
-        if(element.statusValue == 'Đã xác nhận' ){
-            var tr =
-            `
-                <tr>
-                    <td>${element.customerName}</td>
-                    <td>${element.purchaseDate}</td>
-                    <td>${element.soldByName}</td>
-                    <td>${element.statusValue}</td>
-                </tr>
-            `
-            DataTable += tr
+        if (daxacnhan.checked == true ){
+            if(element.statusValue == 'Đã xác nhận' ){
+                var tr =
+                `
+                    <tr>
+                        <td>${element.customerName}</td>
+                        <td>${element.purchaseDate}</td>
+                        <td>${element.soldByName}</td>
+                        <td>${element.statusValue}</td>
+                    </tr>
+                `
+                DataTable += tr
+            }
         }
     });
     $( "#tbxacnhan" ).html(DataTable);
@@ -43,18 +49,20 @@ function myfunc(){
     $.get( "/api/danhsach/", function( data ) {
     var DataTable = '';
     data.forEach(element => {
-        if(element.statusValue == 'Hoàn thành' ){
+        if (hoanthanh.checked == true ){
+            if(element.statusValue == 'Hoàn thành' ){
 
-            var tr =
-            `
-                <tr>
-                    <td>${element.customerName}</td>
-                    <td>${element.purchaseDate}</td>
-                    <td>${element.soldByName}</td>
-                    <td>${element.statusValue}</td>
-                </tr>
-            `
-            DataTable += tr
+                var tr =
+                `
+                    <tr>
+                        <td>${element.customerName}</td>
+                        <td>${element.purchaseDate}</td>
+                        <td>${element.soldByName}</td>
+                        <td>${element.statusValue}</td>
+                    </tr>
+                `
+                DataTable += tr
+            }
         }
     });
     $( "#tbhoanthanh" ).html(DataTable);
