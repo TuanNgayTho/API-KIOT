@@ -5,13 +5,13 @@ import random
 
 
 f = ''
-starttime = ''
+starttime = date.today()
 endtime = ''
 xacnhan = ''
 phieutam = ''
 hoanthanh = ''
 
-today = date.today()
+
 urlToken = 'https://id.kiotviet.vn/connect/token'
 urlStatus = 'https://public.kiotapi.com/orders'
 myobj = {'scopes': 'PublicApi.Access',

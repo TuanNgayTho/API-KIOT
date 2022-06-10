@@ -1,8 +1,5 @@
 from django.shortcuts import render
-from .models import customers
 from django.views import View
-from django.http import HttpResponse
-
 import ReQuest
 from rest_framework.views import APIView
 from .serializers import SnippetSerial
@@ -19,7 +16,6 @@ class SnippetList(APIView):
 
 class IndexView(View):
     def get(self, request):
-        # danhsach = customers.objects.all()
         danhsach = ReQuest.f
         return render(request, "index.html", {'DS': danhsach})
 
@@ -29,6 +25,3 @@ class IndexView(View):
         ReQuest.endtime = request.POST['EndTime']
         print(checklist)
         return render(request, "index.html")
-        # return HttpResponse({starttime, endtime, checklist})
-
-

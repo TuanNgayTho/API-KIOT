@@ -1,6 +1,5 @@
 import threading
 import ReQuest
-import time
 
 
 try:
