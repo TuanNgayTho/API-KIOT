@@ -1,6 +1,6 @@
-setInterval(myfunc,1000);
+setInterval(myfunc,200);
 function myfunc(){
-    $.get( "api/danhsach/", function( data ) {
+    $.get( "/api/danhsach/", function( data ) {
         var DataTable = '';
         data.forEach(element => {
             var tr =
@@ -9,6 +9,7 @@ function myfunc(){
                     <td>${element.customerName}</td>
                     <td>${element.purchaseDate}</td>
                     <td>${element.soldByName}</td>
+                    <td>${element.statusValue}</td>
                 </tr>
             `
             DataTable += tr

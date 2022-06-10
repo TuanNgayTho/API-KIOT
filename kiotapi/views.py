@@ -2,15 +2,17 @@ from django.shortcuts import render
 from .models import customers
 from django.views import View
 from django.http import HttpResponse
-from ReQuest import f, starttime, endtime, phieutam, xacnhan, hoanthanh
+
+import ReQuest
 from rest_framework.views import APIView
 from .serializers import SnippetSerial
 from rest_framework.response import Response
+import Thread
 
 
 class SnippetList(APIView):
     def get(self, request, format=None):
-        snippet = f
+        snippet = ReQuest.f
         serializer = SnippetSerial(snippet, many=True)
         return Response(serializer.data)
 
@@ -18,18 +20,15 @@ class SnippetList(APIView):
 class IndexView(View):
     def get(self, request):
         # danhsach = customers.objects.all()
-        danhsach = f
+        danhsach = ReQuest.f
         return render(request, "index.html", {'DS': danhsach})
 
     def post(self, request):
-        global starttime
-        global endtime
-        global phieutam
-        global xacnhan
-        global hoanthanh
-        starttime = request.POST['StartTime']
-        endtime = request.POST['EndTime']
-        phieutam = request.POST['PhieuTam']
-        xacnhan = request.POST['DaXacNhan']
-        hoanthanh = request.POST['HoanThanh']
-        return HttpResponse({starttime, endtime, phieutam, xacnhan, hoanthanh})
+        checklist = request.POST.getlist('checklist')
+        ReQuest.starttime = request.POST['StartTime']
+        ReQuest.endtime = request.POST['EndTime']
+        print(checklist)
+        return render(request, "index.html")
+        # return HttpResponse({starttime, endtime, checklist})
+
+
