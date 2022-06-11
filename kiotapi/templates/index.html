@@ -14,6 +14,10 @@
             <input type="date" id="lastModifiedFrom" name="StartTime">
             <label for="toDate">Thời gian kết thúc:</label>
             <input type="date" id="toDate" name="EndTime">
+            <input type="checkbox" id="thismonth" name="thismonth" value="true">
+            <label for="thismonth">Tháng này</label>
+            <input type="checkbox" id="luachonkhac" name="luachonkhac" value="false">
+            <label for="thismonth">Lựa chọn khác</label>
             <br>
             <input type="checkbox" id="PT" name="checklist" value="Phiếu tạm">
             <label for="PT">Phiếu đặt tạm</label>
@@ -49,6 +53,9 @@
 </table>
 <br>
 <table id="tbhoanthanh">
+</table>
+<br>
+<table id="tbtrangthai">
 </table>
 <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
 <script src="{% static 'js/myscript.js' %}"></script>
