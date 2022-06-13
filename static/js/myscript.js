@@ -4,8 +4,7 @@ var daxacnhan = document.getElementById('DXN');
 var hoanthanh = document.getElementById('HT');
 var thismonth = document.getElementById('thismonth');
 var luachonkhac = document.getElementById('luachonkhac');
-var starttime = document.getElementById('lastModifiedFrom');
-var endtime = document.getElementById('toDate');
+
 phieutam.checked = true;
 daxacnhan.checked = true;
 hoanthanh.checked = true;
@@ -87,6 +86,7 @@ function myfunc(){
     $( "#tbtrangthai" ).html(DataTable);
 });
 }
+
 $.get( "/api/chedotimkiem/", function( data ) {
     data.forEach(element => {
         if(element.CheDoTimKiem == 'True'){
@@ -95,8 +95,8 @@ $.get( "/api/chedotimkiem/", function( data ) {
         } else{
             thismonth.checked = false;
             luachonkhac.checked = true;
-            starttime = element.ThoiGianBatDau;
-            alert(thismonth);
+            document.getElementById("lastModifiedFrom").value = element.ThoiGianBatDau;
+            document.getElementById('toDate').value = element.THoiGianKetThuc
         }
     });
 });
