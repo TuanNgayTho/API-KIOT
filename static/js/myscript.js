@@ -96,7 +96,8 @@ $.get( "/api/chedotimkiem/", function( data ) {
             thismonth.checked = false;
             luachonkhac.checked = true;
             document.getElementById("lastModifiedFrom").value = element.ThoiGianBatDau;
-            document.getElementById('toDate').value = element.THoiGianKetThuc
+            document.getElementById('toDate').value = element.THoiGianKetThuc;
+            console.log(element.THoiGianKetThuc)
         }
     });
 });
