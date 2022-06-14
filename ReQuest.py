@@ -52,6 +52,10 @@ def getdata():
                                             'toDate': endtime}, headers=header)
         e = d.json()
         f = e['data']
+        for m in f:
+            n = m['purchaseDate']
+            p = n.replace("T", "  ")
+            m["purchaseDate"] = p
         return f
 
 
