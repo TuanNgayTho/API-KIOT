@@ -101,3 +101,14 @@ $.get( "/api/chedotimkiem/", function( data ) {
         }
     });
 });
+
+function myfunc1(){
+    if(thismonth.checked == true){
+        luachonkhac.checked = false;
+    }
+}
+function myfunc2(){
+    if(luachonkhac.checked == true){
+        thismonth.checked = false;
+    }
+}
