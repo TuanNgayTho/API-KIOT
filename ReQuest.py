@@ -1,12 +1,10 @@
 import requests
-from datetime import date
 import time
 import random
+import mysql.connector
 
 
 f = ''
-starttime = date.today()
-endtime = ''
 xacnhan = ''
 phieutam = ''
 hoanthanh = ''
@@ -26,9 +24,9 @@ myStatus = {
             #                 '4: Đã hủy\n'
             #                 '5: Đã xác nhận\n'
             #                 'Vui lòng chọn trạng thái đơn hàng: '),
-            'status': [1, 3, 5],
-            'lastModifiedFrom': starttime,
-            'toDate': endtime,
+            # 'status': [1, 3, 5],
+            # 'lastModifiedFrom': starttime,
+            # 'toDate': endtime,
             }
 
 
@@ -36,6 +34,19 @@ def getdata():
     while True:
         global f
         time.sleep(random.randint(1, 2))
+
+        mydb = mysql.connector.connect(
+            host="127.0.0.1",
+            user="root",
+            password="root",
+            database="kiotapi"
+        )
+        mycursor = mydb.cursor()
+        sql = "SELECT * FROM kiotapi_thoigian WHERE id ='1'"
+        mycursor.execute(sql)
+        myresult = mycursor.fetchone()
+        starttime = myresult[2]
+        endtime = myresult[3]
 
         x = requests.post(urlToken, data=myobj)
         a = x.json()
@@ -48,6 +59,7 @@ def getdata():
         }
 
         d = requests.get(urlStatus, params={'status': [1, 3, 5],
+                                            'pageSize': 100,
                                             'lastModifiedFrom': starttime,
                                             'toDate': endtime}, headers=header)
         e = d.json()

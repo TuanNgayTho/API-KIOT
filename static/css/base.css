@@ -1,9 +1,45 @@
 table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
+  border: 1px solid black;
+  table-layout: fixed;
   width: 100%;
 }
 
+
 table, tr, td, th {
-  border: 1px solid black;
+    font-family: "Times New Roman", Times, serif;
+}
+
+th, td {
+    border: 1px solid black;
+    width: 25%;
+    overflow: hidden;
+}
+
+.card {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card__cover {
+        height: 150px;
+        width: 100%;
+    }
+
+    .card__content {
+        /* Take available height */
+        flex: 1;
+    }
+
+.header {
+    width: 25%;
+
+    /* Background color */
+    background-color: #ddd;
+
+    /* Stick to the top */
+    position: sticky;
+    top: 0;
+
+    /* Displayed on top of other rows when scrolling */
+    z-index: 9999;
 }

@@ -54,7 +54,6 @@ function myfunc(){
     data.forEach(element => {
         if (hoanthanh.checked == true ){
             if(element.statusValue == 'Hoàn thành' ){
-
                 var tr =
                 `
                     <tr>
@@ -85,6 +84,33 @@ function myfunc(){
     });
     $( "#tbtrangthai" ).html(DataTable);
 });
+var title =
+        `
+            <tr>
+                <th>Tên khách hàng</th>
+                <th>Thời gian tạo phiếu</th>
+                <th>Nhân viện tạo phiếu</th>
+                <th>Trạng thái phiếu</th>
+            </tr>
+        `
+
+if (phieutam.checked == true ){
+    document.getElementById("mytable1").innerHTML = title;
+}else{
+    document.getElementById("mytable1").innerHTML = '';
+}
+
+if (daxacnhan.checked == true ){
+    document.getElementById("mytable2").innerHTML = title;
+}else{
+    document.getElementById("mytable2").innerHTML = '';
+}
+
+if (hoanthanh.checked == true ){
+    document.getElementById("mytable3").innerHTML = title;
+}else{
+    document.getElementById("mytable3").innerHTML = '';
+}
 }
 
 $.get( "/api/chedotimkiem/", function( data ) {
@@ -92,6 +118,8 @@ $.get( "/api/chedotimkiem/", function( data ) {
         if(element.CheDoTimKiem == 'True'){
             thismonth.checked = true;
             luachonkhac.checked = false;
+            document.getElementById("lastModifiedFrom").value = element.ThoiGianBatDau;
+            document.getElementById('toDate').value = element.THoiGianKetThuc;
         } else{
             thismonth.checked = false;
             luachonkhac.checked = true;
