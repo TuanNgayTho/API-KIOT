@@ -1,12 +1,66 @@
-table {
-  border: 1px solid black;
-  table-layout: fixed;
-  width: 100%;
+.container1 {
+    /* Center the content */
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    /* Background color */
+    background-color: #bbb;
+
+    /* Size */
+    height: 32px;
+
+    /* Use to position the corners */
+    position: relative;
 }
 
+.container1__side {
+    bottom: -8px;
+    position: absolute;
 
-table, tr, td, th {
-    font-family: "Times New Roman", Times, serif;
+    /* Displayed under the container1 */
+    z-index: -1;
+
+    /* Background */
+    border: 16px solid #ccc;
+
+}
+
+.container1__side--left {
+    /* Position */
+    border-left-color: transparent;
+    left: -24px;
+}
+
+.container1__side--right {
+    /* Position */
+    border-right-color: transparent;
+    right: -24px;
+}
+
+.container1__triangle {
+    position: absolute;
+    top: 100%;
+
+    border: 8px solid transparent;
+    border-bottom-width: 0;
+    border-top-color: #aaa;
+}
+
+.container1__triangle--left {
+    border-right-width: 0;
+    left: 0;
+}
+
+.container1__triangle--right {
+    border-left-width: 0;
+    right: 0;
+}
+
+table, tr, td, th{
+    width: 100%;
+    table-layout: fixed;
+    font-family: 'Smooch', cursive;
 }
 
 th, td {
@@ -14,32 +68,16 @@ th, td {
     width: 25%;
     overflow: hidden;
 }
-
-.card {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .card__cover {
-        height: 150px;
-        width: 100%;
-    }
-
-    .card__content {
-        /* Take available height */
-        flex: 1;
-    }
-
-.header {
-    width: 25%;
-
-    /* Background color */
-    background-color: #ddd;
-
-    /* Stick to the top */
-    position: sticky;
-    top: 0;
-
-    /* Displayed on top of other rows when scrolling */
-    z-index: 9999;
+.title {
+    font-family: 'Smooch', cursive;
+    padding-top: 50px;
+    padding-right: 100px;
+    padding-bottom: 100px;
+    padding-left: 100px;
+}
+.checkbox {
+    font-family: 'Smooch', cursive;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }

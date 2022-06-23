@@ -66,7 +66,7 @@ def getdata():
         f = e['data']
         for m in f:
             n = m['purchaseDate']
-            p = n.replace("T", "  ")
+            p = n.replace("T", "  Giờ: ")
             m["purchaseDate"] = p
         return f
 
