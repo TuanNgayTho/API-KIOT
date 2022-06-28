@@ -1,0 +1,4 @@
+from operator import itemgetter
+f = sorted(rv, key=itemgetter('id',), reverse=True)
+#Đảo ngược dict
+#rv là dict : đinh dạng [{'abc': 'xyz', 'def': 'jak'}]

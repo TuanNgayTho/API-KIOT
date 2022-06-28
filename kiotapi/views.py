@@ -32,8 +32,10 @@ class IndexView(View):
         checklist = request.POST.getlist('checklist')
         thismonthname = request.POST.getlist('thismonthname')
         if thismonthname == ["true"]:
-            starttime = date.today()
-            endtime = date.today() + timedelta(days=1)
+            now = date.today()
+            monday = now - timedelta(days=now.weekday())
+            starttime = monday
+            endtime = date.today()
             ThoiGian.objects.update_or_create(
                 id=1,
                 defaults={"ThoiGianBatDau": starttime,

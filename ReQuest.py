@@ -2,7 +2,9 @@ import requests
 import time
 import random
 import mysql.connector
-
+from datetime import date, timedelta
+from datetime import datetime
+from operator import itemgetter
 
 f = ''
 xacnhan = ''
@@ -45,8 +47,14 @@ def getdata():
         sql = "SELECT * FROM kiotapi_thoigian WHERE id ='1'"
         mycursor.execute(sql)
         myresult = mycursor.fetchone()
-        starttime = myresult[2]
-        endtime = myresult[3]
+        if myresult[1] == 1:
+            now = date.today()
+            monday = now - timedelta(days=now.weekday())
+            starttime = monday
+            endtime = datetime.now()
+        else:
+            starttime = myresult[2]
+            endtime = myresult[3]
 
         x = requests.post(urlToken, data=myobj)
         a = x.json()
@@ -61,9 +69,10 @@ def getdata():
         d = requests.get(urlStatus, params={'status': [1, 3, 5],
                                             'pageSize': 100,
                                             'lastModifiedFrom': starttime,
-                                            'toDate': endtime}, headers=header)
+                                            'toDate': endtime, }, headers=header)
         e = d.json()
-        f = e['data']
+        rv = e['data']
+        f = sorted(rv, key=itemgetter('id',), reverse=True)
         for m in f:
             n = m['purchaseDate']
             p = n.replace("T", "  Giờ: ")
@@ -73,3 +82,4 @@ def getdata():
 
 def run():
     getdata()
+
