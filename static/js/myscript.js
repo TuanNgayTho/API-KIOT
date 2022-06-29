@@ -9,7 +9,7 @@ phieutam.checked = true;
 daxacnhan.checked = true;
 hoanthanh.checked = true;
 function myfunc(){
-    $.get( "/api/danhsach/", function( data ) {
+    $.get( "/api/phieutam/", function( data ) {
         var DataTable = '';
         data.forEach(element => {
             if (phieutam.checked == true ){
@@ -18,9 +18,6 @@ function myfunc(){
                     `
                         <tr>
                             <td>${element.customerName}</td>
-                            <td>${element.purchaseDate}</td>
-                            <td>${element.soldByName}</td>
-                            <td>${element.statusValue}</td>
                         </tr>
                     `
                     DataTable += tr
@@ -29,7 +26,7 @@ function myfunc(){
         });
         $( "#tbtamthu" ).html(DataTable);
     });
-    $.get( "/api/danhsach/", function( data ) {
+    $.get( "/api/xacnhan/", function( data ) {
     var DataTable = '';
     data.forEach(element => {
         if (daxacnhan.checked == true ){
@@ -38,9 +35,6 @@ function myfunc(){
                 `
                     <tr>
                         <td>${element.customerName}</td>
-                        <td>${element.purchaseDate}</td>
-                        <td>${element.soldByName}</td>
-                        <td>${element.statusValue}</td>
                     </tr>
                 `
                 DataTable += tr
@@ -49,7 +43,7 @@ function myfunc(){
     });
     $( "#tbxacnhan" ).html(DataTable);
 });
-    $.get( "/api/danhsach/", function( data ) {
+    $.get( "/api/hoanthanh/", function( data ) {
     var DataTable = '';
     data.forEach(element => {
         if (hoanthanh.checked == true ){
@@ -58,9 +52,6 @@ function myfunc(){
                 `
                     <tr>
                         <td>${element.customerName}</td>
-                        <td>${element.purchaseDate}</td>
-                        <td>${element.soldByName}</td>
-                        <td>${element.statusValue}</td>
                     </tr>
                 `
                 DataTable += tr
@@ -88,9 +79,6 @@ var title =
         `
             <tr>
                 <th>Tên khách hàng</th>
-                <th>Thời gian tạo phiếu</th>
-                <th>Nhân viện tạo phiếu</th>
-                <th>Trạng thái phiếu</th>
             </tr>
         `
 

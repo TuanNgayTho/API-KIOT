@@ -34,7 +34,7 @@ myStatus = {
 
 def getdata():
     while True:
-        global f
+        global f, phieutam, xacnhan, hoanthanh
         time.sleep(random.randint(1, 2))
 
         mydb = mysql.connector.connect(
@@ -66,20 +66,45 @@ def getdata():
             'Authorization': 'Bearer ' + c,
         }
 
-        d = requests.get(urlStatus, params={'status': [1, 3, 5],
+        # Get API Phiết Tạm
+        PhieuTamGet = requests.get(urlStatus, params={'status': 1,
                                             'pageSize': 100,
                                             'lastModifiedFrom': starttime,
                                             'toDate': endtime, }, headers=header)
-        e = d.json()
-        rv = e['data']
-        f = sorted(rv, key=itemgetter('id',), reverse=True)
-        for m in f:
-            n = m['purchaseDate']
-            p = n.replace("T", "  Giờ: ")
-            m["purchaseDate"] = p
-        return f
 
+        PhieuTamJson = PhieuTamGet.json()
+        PhieuTamRv = PhieuTamJson['data']
+        phieutam = sorted(PhieuTamRv, key=itemgetter('id',), reverse=True)
 
+        #Get API Phiết Đã Xác Nhận
+        PhieuDaXacNhanGet = requests.get(urlStatus, params={'status': 5,
+                                            'pageSize': 100,
+                                            'lastModifiedFrom': starttime,
+                                            'toDate': endtime, }, headers=header)
+
+        PhieuDaXacNhanJson = PhieuDaXacNhanGet.json()
+        PhieuDaXacNhanRv = PhieuDaXacNhanJson['data']
+        xacnhan = sorted(PhieuDaXacNhanRv, key=itemgetter('id', ), reverse=True)
+
+        # Get API Phiết Đã Hoàn Thành
+        PhieuDaHoanThanhGet = requests.get(urlStatus, params={'status': 3,
+                                                            'pageSize': 100,
+                                                            'lastModifiedFrom': starttime,
+                                                            'toDate': endtime, }, headers=header)
+
+        PhieuDaHoanThanhJson = PhieuDaHoanThanhGet.json()
+        PhieuDaHoanThanhRv = PhieuDaHoanThanhJson['data']
+        hoanthanh = sorted(PhieuDaHoanThanhRv, key=itemgetter('id', ), reverse=True)
+        # for m in f:
+        #     n = m['purchaseDate']
+        #     p = n.replace("T", "  Giờ: ")
+        #     m["purchaseDate"] = p
+        # print(hoanthanh)
+        # print(xacnhan)
+        # print(phieutam)
+        return hoanthanh
+
+# getdata()
 def run():
     getdata()
 

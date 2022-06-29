@@ -76,7 +76,7 @@ th, td {
     padding-left: 100px;
 }
 
-.checkbox{
+.checkbox, .TitleOfTable{
     font-family: 'Smooch', cursive;
     align-items: center;
     display: flex;
@@ -133,4 +133,11 @@ th, td {
 }
 .input{
     background-color: transparent;
+}
+.TitleOfTable{
+    border-bottom: 2px solid black;
+}
+.col-sm-4{
+    border: 1px solid black;
+    text-align: center;
 }

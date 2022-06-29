@@ -1,20 +1,31 @@
 from django.shortcuts import render
 from django.views import View
 import ReQuest
+import Thread
 from rest_framework.views import APIView
 from .serializers import SnippetSerial, SnippetSerialthoigian
 from rest_framework.response import Response
 from kiotapi.models import ThoiGian
-import Thread
 from datetime import date, timedelta
 
 
 class SnippetList(APIView):
     def get(self, request, format=None):
-        snippet = ReQuest.f
+        snippet = ReQuest.hoanthanh
         serializer = SnippetSerial(snippet, many=True)
         return Response(serializer.data)
 
+class SnippetListxacnhan(APIView):
+    def get(self, request, format=None):
+        snippet = ReQuest.xacnhan
+        serializer = SnippetSerial(snippet, many=True)
+        return Response(serializer.data)
+
+class SnippetListphieutam(APIView):
+    def get(self, request, format=None):
+        snippet = ReQuest.phieutam
+        serializer = SnippetSerial(snippet, many=True)
+        return Response(serializer.data)
 
 class Snippetthoigian(APIView):
     def get(self, request, format=None):
@@ -25,7 +36,7 @@ class Snippetthoigian(APIView):
 
 class IndexView(View):
     def get(self, request):
-        danhsach = ReQuest.f
+        danhsach = ReQuest.hoanthanh
         return render(request, "index.html", {'DS': danhsach})
 
     def post(self, request):
