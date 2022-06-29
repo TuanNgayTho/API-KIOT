@@ -140,4 +140,5 @@ th, td {
 .col-sm-4{
     border: 1px solid black;
     text-align: center;
+    margin-bottom: 10px;
 }

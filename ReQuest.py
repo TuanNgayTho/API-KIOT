@@ -53,8 +53,9 @@ def getdata():
             starttime = monday
             endtime = datetime.now()
         else:
+            dt = datetime.combine(myresult[3], datetime.min.time())
             starttime = myresult[2]
-            endtime = myresult[3]
+            endtime = dt + timedelta(hours=23, minutes=59, seconds=59)
 
         x = requests.post(urlToken, data=myobj)
         a = x.json()
@@ -99,10 +100,7 @@ def getdata():
         #     n = m['purchaseDate']
         #     p = n.replace("T", "  Giờ: ")
         #     m["purchaseDate"] = p
-        # print(hoanthanh)
-        # print(xacnhan)
-        # print(phieutam)
-        return hoanthanh
+        # return hoanthanh
 
 # getdata()
 def run():
