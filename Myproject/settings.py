@@ -78,13 +78,23 @@ WSGI_APPLICATION = 'Myproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'kiotapi',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': 'root',
+        'NAME': 'd2pi3soe46nabr',
+        'HOST': 'ec2-44-195-162-77.compute-1.amazonaws.com',
+        'PORT': '5432',
+        'USER': 'hkudsfowocnwlu',
+        'PASSWORD': '461deac5a5c93378f1d8f0a84fb3fd70e94918d991c85da654f052d25faaff6c',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'kiotapi',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#         'USER': 'root',
+#         'PASSWORD': 'root',
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
