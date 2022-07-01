@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -76,12 +77,12 @@ WSGI_APPLICATION = 'Myproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'kiotapi',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': 'root',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd2pi3soe46nabr',
+        'HOST': 'ec2-44-195-162-77.compute-1.amazonaws.com',
+        'PORT': '5432',
+        'USER': 'hkudsfowocnwlu',
+        'PASSWORD': '461deac5a5c93378f1d8f0a84fb3fd70e94918d991c85da654f052d25faaff6c',
     }
 }
 
@@ -127,3 +128,4 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+django_heroku.settings(locals())
