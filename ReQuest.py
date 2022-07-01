@@ -33,87 +33,78 @@ myStatus = {
             }
 
 
-# def getdata():
-#     while True:
-#         global f, phieutam, xacnhan, hoanthanh
-#         time.sleep(random.randint(1, 2))
-#
-#         mydb = mysql.connector.connect(
-#             host="127.0.0.1",
-#             user="root",
-#             password="root",
-#             database="kiotapi",
-#         )
-#         mycursor = mydb.cursor()
-#         sql = "SELECT * FROM kiotapi_thoigian WHERE id ='1'"
-#         mycursor.execute(sql)
-#         myresult = mycursor.fetchone()
-#         if myresult[1] == 1:
-#             now = date.today()
-#             monday = now - timedelta(days=now.weekday())
-#             starttime = monday
-#             endtime = datetime.now()
-#         else:
-#             dt = datetime.combine(myresult[3], datetime.min.time())
-#             starttime = myresult[2]
-#             endtime = dt + timedelta(hours=23, minutes=59, seconds=59)
-#
-#         x = requests.post(urlToken, data=myobj)
-#         a = x.json()
-#         b = a["access_token"]
-#         c = str(b)
-#
-#         header = {
-#             'Retailer': 'tmktek',
-#             'Authorization': 'Bearer ' + c,
-#         }
-#
-#         # Get API Phiết Tạm
-#         PhieuTamGet = requests.get(urlStatus, params={'status': 1,
-#                                             'pageSize': 100,
-#                                             'lastModifiedFrom': starttime,
-#                                             'toDate': endtime, }, headers=header)
-#
-#         PhieuTamJson = PhieuTamGet.json()
-#         PhieuTamRv = PhieuTamJson['data']
-#         phieutam = sorted(PhieuTamRv, key=itemgetter('id',), reverse=True)
-#
-#         #Get API Phiết Đã Xác Nhận
-#         PhieuDaXacNhanGet = requests.get(urlStatus, params={'status': 5,
-#                                             'pageSize': 100,
-#                                             'lastModifiedFrom': starttime,
-#                                             'toDate': endtime, }, headers=header)
-#
-#         PhieuDaXacNhanJson = PhieuDaXacNhanGet.json()
-#         PhieuDaXacNhanRv = PhieuDaXacNhanJson['data']
-#         xacnhan = sorted(PhieuDaXacNhanRv, key=itemgetter('id', ), reverse=True)
-#
-#         # Get API Phiết Đã Hoàn Thành
-#         PhieuDaHoanThanhGet = requests.get(urlStatus, params={'status': 3,
-#                                                             'pageSize': 100,
-#                                                             'lastModifiedFrom': starttime,
-#                                                             'toDate': endtime, }, headers=header)
-#
-#         PhieuDaHoanThanhJson = PhieuDaHoanThanhGet.json()
-#         PhieuDaHoanThanhRv = PhieuDaHoanThanhJson['data']
-#         hoanthanh = sorted(PhieuDaHoanThanhRv, key=itemgetter('id', ), reverse=True)
-#         # for m in f:
-#         #     n = m['purchaseDate']
-#         #     p = n.replace("T", "  Giờ: ")
-#         #     m["purchaseDate"] = p
-#         # print(hoanthanh)
-#         return hoanthanh
-
-
-def run():
-    getdata()
-
-
 def getdata():
-    mydb = psycopg2.connect(
+    while True:
+        global f, phieutam, xacnhan, hoanthanh
+        time.sleep(random.randint(1, 2))
+
+        mydb = psycopg2.connect(
                 host="ec2-44-195-162-77.compute-1.amazonaws.com",
                 user="hkudsfowocnwlu",
                 password="461deac5a5c93378f1d8f0a84fb3fd70e94918d991c85da654f052d25faaff6c",
                 database="d2pi3soe46nabr",
             )
+        mycursor = mydb.cursor()
+        sql = "SELECT * FROM kiotapi_thoigian WHERE id ='1'"
+        mycursor.execute(sql)
+        myresult = mycursor.fetchone()
+        if myresult[1] == 1:
+            now = date.today()
+            monday = now - timedelta(days=now.weekday())
+            starttime = monday
+            endtime = datetime.now()
+        else:
+            dt = datetime.combine(myresult[3], datetime.min.time())
+            starttime = myresult[2]
+            endtime = dt + timedelta(hours=23, minutes=59, seconds=59)
+
+        x = requests.post(urlToken, data=myobj)
+        a = x.json()
+        b = a["access_token"]
+        c = str(b)
+
+        header = {
+            'Retailer': 'tmktek',
+            'Authorization': 'Bearer ' + c,
+        }
+
+        # Get API Phiết Tạm
+        PhieuTamGet = requests.get(urlStatus, params={'status': 1,
+                                            'pageSize': 100,
+                                            'lastModifiedFrom': starttime,
+                                            'toDate': endtime, }, headers=header)
+
+        PhieuTamJson = PhieuTamGet.json()
+        PhieuTamRv = PhieuTamJson['data']
+        phieutam = sorted(PhieuTamRv, key=itemgetter('id',), reverse=True)
+
+        #Get API Phiết Đã Xác Nhận
+        PhieuDaXacNhanGet = requests.get(urlStatus, params={'status': 5,
+                                            'pageSize': 100,
+                                            'lastModifiedFrom': starttime,
+                                            'toDate': endtime, }, headers=header)
+
+        PhieuDaXacNhanJson = PhieuDaXacNhanGet.json()
+        PhieuDaXacNhanRv = PhieuDaXacNhanJson['data']
+        xacnhan = sorted(PhieuDaXacNhanRv, key=itemgetter('id', ), reverse=True)
+
+        # Get API Phiết Đã Hoàn Thành
+        PhieuDaHoanThanhGet = requests.get(urlStatus, params={'status': 3,
+                                                            'pageSize': 100,
+                                                            'lastModifiedFrom': starttime,
+                                                            'toDate': endtime, }, headers=header)
+
+        PhieuDaHoanThanhJson = PhieuDaHoanThanhGet.json()
+        PhieuDaHoanThanhRv = PhieuDaHoanThanhJson['data']
+        hoanthanh = sorted(PhieuDaHoanThanhRv, key=itemgetter('id', ), reverse=True)
+        # for m in f:
+        #     n = m['purchaseDate']
+        #     p = n.replace("T", "  Giờ: ")
+        #     m["purchaseDate"] = p
+        # print(hoanthanh)
+        # return hoanthanh
+
+
+def run():
+    getdata()
 
