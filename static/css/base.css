@@ -76,7 +76,16 @@ th, td {
     padding-left: 100px;
 }
 
-.checkbox, .TitleOfTable{
+.checkbox{
+    font-family: 'Smooch', cursive;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.TitleOfTable{
     font-family: 'Smooch', cursive;
     align-items: center;
     display: flex;
@@ -91,14 +100,19 @@ th, td {
 }
 .box {
     float: left;
-    margin: 0.11111%;
+    margin: 0px;
     width: 33%;
-    padding: 50px;
+    padding: 15px;
     background-size: 500% 500%;
     min-height: 220px;
-    min-width: 330px;
+    min-width: 260px;
     height: auto;
     position: relative;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 .center1{
     padding-top: 6px;
@@ -107,6 +121,8 @@ th, td {
     border-radius: 5px;
     text-align: center;
     min-height: 130px;
+    max-width: 240px;
+    min-width: 240px;
 }
 .left{
     padding-top: 18px;
@@ -115,6 +131,8 @@ th, td {
     border: 2px solid black;
     border-radius: 5px;
     min-height: 130px;
+    max-width: 240px;
+    min-width: 240px;
 }
 .right{
     padding-top: 24px;
@@ -123,6 +141,8 @@ th, td {
     border: 2px solid black;
     border-radius: 5px;
     min-height: 130px;
+    max-width: 240px;
+    min-width: 240px;
 }
 .body {
 
@@ -141,4 +161,10 @@ th, td {
     border: 1px solid black;
     text-align: center;
     margin-bottom: 10px;
+}
+
+.form {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
 }

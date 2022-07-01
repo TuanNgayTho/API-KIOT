@@ -102,7 +102,7 @@ def getdata():
         #     p = n.replace("T", "  Giờ: ")
         #     m["purchaseDate"] = p
         # print(hoanthanh)
-        # return hoanthanh
+        return hoanthanh
 
 
 def run():
