@@ -6,4 +6,4 @@ requests
 djangorestframework
 mysql-connector-python
 pandas
-django psycopg2
+psycopg2
