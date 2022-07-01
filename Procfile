@@ -1,1 +1,1 @@
-web: gunicorn kiotapi:app
+web: gunicorn Myproject:app
