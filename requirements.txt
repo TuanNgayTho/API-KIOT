@@ -1,0 +1,9 @@
+django
+gunicorn
+django-heroku
+django-crispy-forms
+requests
+djangorestframework
+mysql-connector-python
+pandas
+django psycopg2
