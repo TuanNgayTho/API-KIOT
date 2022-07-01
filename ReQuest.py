@@ -38,10 +38,10 @@ def getdata():
         time.sleep(random.randint(1, 2))
 
         mydb = mysql.connector.connect(
-            host="ec2-44-195-162-77.compute-1.amazonaws.com",
-            user="hkudsfowocnwlu",
-            password="461deac5a5c93378f1d8f0a84fb3fd70e94918d991c85da654f052d25faaff6c",
-            database="d2pi3soe46nabr"
+            host="127.0.0.1",
+            user="root",
+            password="root",
+            database="kiotapi",
         )
         mycursor = mydb.cursor()
         sql = "SELECT * FROM kiotapi_thoigian WHERE id ='1'"
@@ -100,9 +100,10 @@ def getdata():
         #     n = m['purchaseDate']
         #     p = n.replace("T", "  Giờ: ")
         #     m["purchaseDate"] = p
+        # print(hoanthanh)
         return hoanthanh
 
-# getdata()
+
 def run():
     getdata()
 
