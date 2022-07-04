@@ -1,7 +1,7 @@
 import requests
 import time
 import random
-import mysql.connector
+# import mysql.connector
 import psycopg2
 from datetime import date, timedelta
 from datetime import datetime
@@ -11,7 +11,7 @@ f = ''
 xacnhan = ''
 phieutam = ''
 hoanthanh = ''
-
+header = ''
 
 urlToken = 'https://id.kiotviet.vn/connect/token'
 urlStatus = 'https://public.kiotapi.com/orders'
@@ -35,7 +35,7 @@ myStatus = {
 
 def getdata():
     while True:
-        global f, phieutam, xacnhan, hoanthanh
+        global f, phieutam, xacnhan, hoanthanh, header
         time.sleep(random.randint(1, 2))
         try:
             mydb = psycopg2.connect(
@@ -50,9 +50,10 @@ def getdata():
             myresult = mycursor.fetchone()
             if myresult[1] == 1:
                 now = date.today()
+                dt = datetime.combine(now, datetime.min.time())
                 monday = now - timedelta(days=now.weekday())
                 starttime = monday
-                endtime = datetime.now()
+                endtime = dt + timedelta(hours=23, minutes=59, seconds=59)
             else:
                 dt = datetime.combine(myresult[3], datetime.min.time())
                 starttime = myresult[2]
