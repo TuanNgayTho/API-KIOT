@@ -8,6 +8,8 @@ from datetime import datetime
 from operator import itemgetter
 
 f = ''
+endtime = ''
+starttime = ''
 xacnhan = ''
 phieutam = ''
 hoanthanh = ''
@@ -35,7 +37,7 @@ myStatus = {
 
 def getdata():
     while True:
-        global f, phieutam, xacnhan, hoanthanh, header
+        global f, phieutam, xacnhan, hoanthanh, header, starttime, endtime
         time.sleep(random.randint(1, 2))
         try:
             mydb = psycopg2.connect(
@@ -48,16 +50,31 @@ def getdata():
             sql = "SELECT * FROM kiotapi_thoigian WHERE id ='1'"
             mycursor.execute(sql)
             myresult = mycursor.fetchone()
+            # lựa chọn khác
             if myresult[1] == 1:
+                dt = datetime.combine(myresult[3], datetime.min.time())
+                starttime = myresult[2]
+                endtime = dt + timedelta(hours=23, minutes=59, seconds=59)
+            # Tháng này
+            if myresult[4] == 1:
+                now = date.today()
+                dt = datetime.combine(now, datetime.min.time())
+                starttime = date.today().replace(day=1)
+                endtime = dt + timedelta(hours=23, minutes=59, seconds=59)
+            # Tuần này
+            if myresult[5] == 1:
                 now = date.today()
                 dt = datetime.combine(now, datetime.min.time())
                 monday = now - timedelta(days=now.weekday())
                 starttime = monday
                 endtime = dt + timedelta(hours=23, minutes=59, seconds=59)
-            else:
-                dt = datetime.combine(myresult[3], datetime.min.time())
-                starttime = myresult[2]
+            # Hôm nay
+            if myresult[6] == 1:
+                now = date.today()
+                dt = datetime.combine(now, datetime.min.time())
+                starttime = now
                 endtime = dt + timedelta(hours=23, minutes=59, seconds=59)
+
         except:
             now = date.today()
             monday = now - timedelta(days=now.weekday())

@@ -11,6 +11,9 @@ class SnippetSerial(serializers.Serializer):
 
 
 class SnippetSerialthoigian(serializers.Serializer):
+    ToDay = serializers.CharField(required=False, allow_blank=True, max_length=100)
+    ThisWeek = serializers.CharField(required=False, allow_blank=True, max_length=100)
+    ThisMonth = serializers.CharField(required=False, allow_blank=True, max_length=100)
     CheDoTimKiem = serializers.CharField(required=False, allow_blank=True, max_length=100)
     ThoiGianBatDau = serializers.CharField(required=False, allow_blank=True, max_length=100)
     THoiGianKetThuc = serializers.CharField(required=False, allow_blank=True, max_length=100)

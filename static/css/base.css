@@ -8,34 +8,34 @@
     background-color: #bbb;
 
     /* Size */
-    height: 32px;
+    height: 40px;
 
     /* Use to position the corners */
     position: relative;
 }
 
 .container1__side {
-    bottom: -8px;
+    bottom: -10px;
     position: absolute;
 
     /* Displayed under the container1 */
     z-index: -1;
 
     /* Background */
-    border: 16px solid #ccc;
+    border: 20px solid #ccc;
 
 }
 
 .container1__side--left {
     /* Position */
     border-left-color: transparent;
-    left: -24px;
+    left: -31px;
 }
 
 .container1__side--right {
     /* Position */
     border-right-color: transparent;
-    right: -24px;
+    right: -31px;
 }
 
 .container1__triangle {
@@ -60,7 +60,7 @@
 table, tr, td, th{
     width: 100%;
     table-layout: fixed;
-    font-family: 'Smooch', cursive;
+    font-family: 'Times New Roman', cursive;
 }
 
 th, td {
@@ -69,15 +69,19 @@ th, td {
     overflow: hidden;
 }
 .title {
-    font-family: 'Smooch', cursive;
+    font-family: 'Times New Roman', cursive;
     padding-top: 50px;
     padding-right: 100px;
     padding-bottom: 50px;
     padding-left: 100px;
+    font-size: 30px;
+    font-style: italic;
+    color: #00ccff;
+    text-shadow: 1px 1px 2px black, 0 0 25px #ccf5ff, 0 0 5px #ccf5ff;
 }
 
 .checkbox{
-    font-family: 'Smooch', cursive;
+    font-family: 'Times New Roman', cursive;
     align-items: center;
     display: flex;
     flex-wrap: wrap;
@@ -86,7 +90,7 @@ th, td {
 }
 
 .TitleOfTable{
-    font-family: 'Smooch', cursive;
+    font-family: 'Times New Roman', cursive;
     align-items: center;
     display: flex;
     flex-wrap: wrap;
@@ -114,7 +118,7 @@ th, td {
     justify-content: center;
 }
 .center1{
-    padding-top: 6px;
+    padding-top: 8px;
     border-width:1px;
     border: 2px solid black;
     border-radius: 5px;
@@ -124,8 +128,8 @@ th, td {
     min-width: 240px;
 }
 .left{
-    padding-top: 18px;
-    padding-left: 50px;
+    padding-top: 14px;
+    padding-left: 45px;
     border-width:1px;
     border: 2px solid black;
     border-radius: 5px;
@@ -134,7 +138,7 @@ th, td {
     min-width: 240px;
 }
 .right{
-    padding-top: 24px;
+    padding-top: 6px;
     padding-left: 15px;
     border-width:1px;
     border: 2px solid black;
@@ -147,8 +151,7 @@ th, td {
 
 }
 .submit{
-    padding-left: 12px;
-    margin-top: 8px;
+    margin-top: 3px;
 }
 .input{
     background-color: transparent;
@@ -166,4 +169,25 @@ th, td {
     flex-wrap: wrap;
     justify-content: center;
     width: 80%;
+}
+#phieutam {
+  background-color: #ffffe6;
+}
+#xacnhan {
+  background-color: #ffe6e6;
+}
+#hoanthanh {
+  background-color: #d8f3e5;
+}
+#tbtamthu {
+  background-color: #ffff99;
+}
+#tbxacnhan {
+  background-color: #ff9999;
+}
+#tbhoanthanh {
+  background-color: #9de1be;
+}
+#nutnhan {
+    font-weight: bold;
 }

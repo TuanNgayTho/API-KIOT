@@ -2,8 +2,10 @@ setInterval(myfunc,500);
 var phieutam = document.getElementById('PT');
 var daxacnhan = document.getElementById('DXN');
 var hoanthanh = document.getElementById('HT');
-var thismonth = document.getElementById('thismonth');
+var thisweek = document.getElementById('thisweek');
 var luachonkhac = document.getElementById('luachonkhac');
+var today = document.getElementById('today');
+var thangnay = document.getElementById('thangnay');
 
 phieutam.checked = true;
 daxacnhan.checked = true;
@@ -103,13 +105,36 @@ if (hoanthanh.checked == true ){
 
 $.get( "/api/chedotimkiem/", function( data ) {
     data.forEach(element => {
-        if(element.CheDoTimKiem == 'True'){
-            thismonth.checked = true;
+        if(element.ToDay == 'True'){
+            today.checked = true;
+            thisweek.checked = false;
+            thangnay.checked = false;
             luachonkhac.checked = false;
             document.getElementById("lastModifiedFrom").value = element.ThoiGianBatDau;
             document.getElementById('toDate').value = element.THoiGianKetThuc;
-        } else{
-            thismonth.checked = false;
+        }
+        if(element.ThisWeek == 'True'){
+            today.checked = false;
+            thisweek.checked = true;
+            thangnay.checked = false;
+            luachonkhac.checked = false;
+            document.getElementById("lastModifiedFrom").value = element.ThoiGianBatDau;
+            document.getElementById('toDate').value = element.THoiGianKetThuc;
+            console.log(element.THoiGianKetThuc)
+        }
+        if(element.ThisMonth == 'True'){
+            today.checked = false;
+            thisweek.checked = false;
+            thangnay.checked = true;
+            luachonkhac.checked = false;
+            document.getElementById("lastModifiedFrom").value = element.ThoiGianBatDau;
+            document.getElementById('toDate').value = element.THoiGianKetThuc;
+            console.log(element.THoiGianKetThuc)
+        }
+        if(element.CheDoTimKiem == 'True'){
+            today.checked = false;
+            thisweek.checked = false;
+            thangnay.checked = false;
             luachonkhac.checked = true;
             document.getElementById("lastModifiedFrom").value = element.ThoiGianBatDau;
             document.getElementById('toDate').value = element.THoiGianKetThuc;
@@ -119,12 +144,30 @@ $.get( "/api/chedotimkiem/", function( data ) {
 });
 
 function myfunc1(){
-    if(thismonth.checked == true){
+    if(thisweek.checked == true){
         luachonkhac.checked = false;
+        today.checked = false;
+        thangnay.checked = false;
     }
 }
 function myfunc2(){
     if(luachonkhac.checked == true){
-        thismonth.checked = false;
+        thisweek.checked = false;
+        today.checked = false;
+        thangnay.checked = false;
+    }
+}
+function myfunc3(){
+    if(today.checked == true){
+        thisweek.checked = false;
+        luachonkhac.checked = false;
+        thangnay.checked = false;
+    }
+}
+function myfunc4(){
+    if(thangnay.checked == true){
+        thisweek.checked = false;
+        today.checked = false;
+        luachonkhac.checked = false;
     }
 }
